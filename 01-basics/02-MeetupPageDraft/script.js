@@ -44,23 +44,114 @@ const agendaItemIcons = {
   other: 'cal-sm',
 };
 
+const fetchMeetups = () =>
+  fetch('./api/meetups.json').then((res) => res.json());
+
 export const app = new Vue({
   el: '#app',
-
-  data: {
-    //
+  data() {
+    return {
+      rawMeetups: null,
+      timetableDefault: [
+        {
+          type: 'organisation',
+          name: 'Регистрация',
+          iconId: 'key',
+        },
+        {
+          type: 'organisation',
+          name: 'Открытие',
+          iconId: 'cal-sm',
+        },
+        {
+          type: 'talk',
+          name: 'Выступленя',
+          iconId: 'list',
+          talk: true,
+        },
+        {
+          type: 'organisation',
+          name: 'Перерыв',
+          iconId: 'clock',
+        },
+        {
+          type: 'talk',
+          name: 'Выступленя',
+          iconId: 'list',
+          talk: true,
+        },
+        {
+          type: 'organisation',
+          name: 'Coffee Break',
+          iconId: 'coffee',
+        },
+        {
+          type: 'talk',
+          name: 'Выступленя',
+          iconId: 'list',
+          talk: true,
+        },
+        {
+          type: 'organisation',
+          name: 'Закрытие',
+          iconId: 'key',
+        },
+        {
+          type: 'organisation',
+          name: 'Afterparty',
+          iconId: 'cal-sm',
+        },
+      ],
+    };
   },
 
   mounted() {
     // Требуется получить данные митапа с API
+    fetchMeetups().then((meetups) => {
+      this.rawMeetups = meetups;
+    });
   },
 
   computed: {
-    //
+    meetups() {
+      if (!this.rawMeetups) {
+        return null;
+      }
+
+      return this.rawMeetups.map((meetup) => ({
+        ...meetup,
+        date: new Date(meetup.date),
+        cover: meetup.imageId
+          ? `url(https://course-vue.javascript.ru/api/images/${meetup.imageId}`
+          : null,
+        coverStyle: meetup.imageId
+          ? {
+              '--bg-url': `url(https://course-vue.javascript.ru/api/images/${meetup.imageId}`,
+            }
+          : undefined,
+        iconUrl: '',
+        localDate: new Date(meetup.date).toLocaleString(navigator.language, {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        }),
+        dateOnlyString: new Date(meetup.date).toISOString().split('T')[0],
+      }));
+    },
   },
 
   methods: {
     // Получение данных с API предпочтительнее оформить отдельным методом,
     // а не писать прямо в mounted()
+    formatData(date) {
+      return new Date(date).toLocaleString(navigator.language, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
+    },
   },
 });
+app.$mount('#app');
+
+window.app = app;

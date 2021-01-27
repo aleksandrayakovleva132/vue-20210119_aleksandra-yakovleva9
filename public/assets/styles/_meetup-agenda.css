@@ -54,6 +54,19 @@
   margin-bottom: 0;
 }
 
+.meetup-agenda__list {
+  list-style: none; padding: 0;
+}
+
+.meetup-agenda__list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.meetup-agenda__icon {
+  display: inline-block;
+  margin-right: 6px;
+}
 @media all and (min-width: 992px) {
   .meetup-agenda__item {
     padding: 40px 0;

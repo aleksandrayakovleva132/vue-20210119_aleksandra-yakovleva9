@@ -7,7 +7,23 @@
   "organizer": "Игорь Ш.",
   "place": "Москва, офис Voximplant (ул. Мытная 66)",
   "organizing": false,
-  "attending": true
+  "talk": true,
+  "reports": [
+    {
+      "name": "Мария",
+      "title": "Новые возможности CSS",
+      "time": "10:00 - 11.30",
+      "eng": false,
+      "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text."
+    },
+    {
+      "name": "Валентин",
+      "title": "Vue or React?",
+      "time": "14:00 - 15.30",
+      "eng": true,
+      "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text."
+    }
+  ]
 }, {
   "id": 2,
   "title": "Демо-Митап",
@@ -17,7 +33,7 @@
   "organizer": "Demo Organizer",
   "place": "Internet",
   "organizing": true,
-  "attending": false
+  "talk": false
 }, {
   "id": 3,
   "title": "Vue.js Moscow Meetup #1",
@@ -27,7 +43,23 @@
   "organizer": "Eugeny F.",
   "place": "Москва, Физтехпарк, офис Acronis",
   "organizing": false,
-  "attending": true
+  "talk": true,
+  "reports": [
+    {
+      "name": "Иван",
+      "title": "Java Script в 2021",
+      "time": "10:00 - 11.30",
+      "eng": false,
+      "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text."
+    },
+    {
+      "name": "Дмитрий",
+      "title": "What is new in vue.js",
+      "time": "14:00 - 15.30",
+      "eng": true,
+      "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text."
+    }
+  ]
 }, {
   "id": 4,
   "title": "Vue.js Moscow Meetup #2 - Mail.ru",
@@ -37,7 +69,9 @@
   "organizer": "Eugeny F.",
   "place": "Москва, Офис компании Mail.Ru Group",
   "organizing": false,
-  "attending": false
+  "attending": false,
+  "talk": false
+
 }, {
   "id": 5,
   "title": "Vue.js Moscow #3 - Ozon",
@@ -47,7 +81,24 @@
   "organizer": "Eugeny F.",
   "place": "Москва, Офис компании Mail.Ru Group",
   "organizing": false,
-  "attending": false
+  "attending": false,
+  "talk": true,
+  "reports": [
+    {
+      "name": "Иван",
+      "title": "Java Script в 2021",
+      "time": "10:00 - 11.30",
+      "eng": false,
+      "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text."
+    },
+    {
+      "name": "Дмитрий",
+      "title": "What is new in vue.js",
+      "time": "14:00 - 15.30",
+      "eng": true,
+      "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text."
+    }
+  ]
 }, {
   "id": 6,
   "title": "VueConf US",
@@ -57,7 +108,24 @@
   "organizer": "Evan You",
   "place": "USA, AUSTIN CONVENTION CENTER",
   "organizing": false,
-  "attending": false
+  "attending": false,
+  "talk": true,
+  "reports": [
+    {
+      "name": "Иван",
+      "title": "Java Script в 2021",
+      "time": "10:00 - 11.30",
+      "eng": false,
+      "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text."
+    },
+    {
+      "name": "Дмитрий",
+      "title": "What is new in vue.js",
+      "time": "14:00 - 15.30",
+      "eng": true,
+      "description": ""
+    }
+  ]
 }, {
   "id": 7,
   "title": "VueJS Course",
@@ -67,5 +135,18 @@
   "organizer": "Grigorii K. Shartsev",
   "place": "learn.javascript.ru",
   "organizing": false,
-  "attending": true
+  "attending": true,
+  "timetable": [
+    {
+      "name": "1 модуль",
+      "talk": true
+    },
+    {
+      "name": "перерыв"
+    },
+    {
+      "name": "2 модуль",
+      "talk": true
+    }
+  ]
 }]

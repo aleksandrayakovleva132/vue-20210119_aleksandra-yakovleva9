@@ -10,48 +10,78 @@
 </head>
 <body>
 <div id="app">
-  <div>
-    <div class="meetup-cover">
-      <h1 class="meetup-cover__title">Название митапа</h1>
+  <div v-for="meetup in meetups">
+    <div class="meetup-cover"
+         :style="meetup.coverStyle"
+    >
+      <h1 class="meetup-cover__title">{{ meetup.title }}</h1>
     </div>
 
     <div class="container">
       <div class="meetup">
         <div class="meetup__content">
-          <h3>Описание</h3>
-          <p class="meetup-description">Описание митапа</p>
-
+          <template v-if="meetup.description">
+            <h3>Описание</h3>
+            <p class="meetup-description">{{meetup.description}}</p>
+          </template>
+          <template>
           <h3>Программа</h3>
           <div class="meetup-agenda">
-            <p class="meetup-agenda__empty">Программа пока пуста, но когда-нибудь в ней обязательно что-нибудь появится!</p>
-            <div class="meetup-agenda__item">
-              <div class="meetup-agenda__item-col">
-                <img class="icon" alt="icon" src="/assets/icons/icon-cal-sm.svg" />
-              </div>
-              <div class="meetup-agenda__item-col">00:00 - 00:00</div>
-              <div class="meetup-agenda__item-col">
-                <h5 class="meetup-agenda__title">Название доклада</h5>
-                <p><span>Докладчик</span><span class="meetup-agenda__dot"></span><span class="meetup-agenda__lang">RU</span></p>
-                <p>Описание доклада</p>
-              </div>
-            </div>
+<!--            <p  class="meetup-agenda__empty">Программа пока пуста, но когда-нибудь в ней обязательно что-нибудь появится!-->
+<!--            </p>-->
+            <template v-if="!meetup.timetable">
+              <ul class="meetup-agenda__list" v-for="(item, index) in timetableDefault">
+                <li class="meetup-agenda__list-item" :key="index">
+                  <span class="meetup-agenda__icon">
+                     <img :src="'/assets/icons/icon-' + item.iconId + '.svg'" alt="">
+                  </span>
 
+                  {{ item.name }}
+                </li>
+              </ul>
+            </template>
+            <template v-else>
+              <ul v-for="(item, index) in meetup.timetable" :key="index">
+                <li>
+                  {{ item.name }}
+                </li>
+              </ul>
+            </template>
+            <template v-if="meetup.talk">
+              <div class="meetup-agenda__item" v-for="(item, index) in meetup.reports" :key="index">
+                <div class="meetup-agenda__item-col" style="margin-right: 7px;">
+                  <img class="icon" alt="icon" src="/assets/icons/icon-cal-sm.svg" />
+                </div>
+                <div class="meetup-agenda__item-col">{{ item.time }}</div>
+                <div class="meetup-agenda__item-col">
+                  <h5 class="meetup-agenda__title">{{ item.title }}</h5>
+                  <p>
+                    <span>{{ item.name }}</span>
+                    <span class="meetup-agenda__dot"></span>
+                    <span class="meetup-agenda__lang" v-if="item.eng">ENG</span>
+                    <span class="meetup-agenda__lang" v-else>RU</span>
+                  </p>
+                  <p v-if="item.description">{{item.description}}</p>
+                </div>
+              </div>
+            </template>
           </div>
+          </template>
         </div>
 
         <div class="meetup__aside">
           <ul class="info-list">
             <li>
               <img class="icon info-list__icon" alt="icon" src="/assets/icons/icon-user.svg" />
-              Организатор
+              {{ meetup.organizer }}
             </li>
             <li>
               <img class="icon info-list__icon" alt="icon" src="/assets/icons/icon-map.svg" />
-              Место
+              {{ meetup.place }}
             </li>
             <li>
               <img class="icon info-list__icon" alt="icon" src="/assets/icons/icon-cal-lg.svg" />
-              <time datetime="2020-02-31">31 фев. 2020</time>
+              <time datetime="2020-02-31">{{ formatData(meetup.date )}}</time>
             </li>
           </ul>
         </div>
